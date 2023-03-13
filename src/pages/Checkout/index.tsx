@@ -1,8 +1,9 @@
+import App from '@src/App'
 import React from 'react'
 
 const Checkout = () => {
   return (
-    <div>Checkout</div>
+    <App/>
   )
 }
 
