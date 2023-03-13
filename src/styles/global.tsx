@@ -7,6 +7,15 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
     }
+    body{
+        width: 85%;
+        margin: 0 auto;
+        min-width: 280px;
+        @media(max-width: 350px){
+            width: 100%;
+            padding: 0 8px;
+        }
+    }
     body, input, textarea, button {
         font-family:  ${({ theme }) => theme.source.text}, sans-serif;
         font-weight: 400;
