@@ -1,17 +1,17 @@
-/* {
+{
     "files.exclude": {
       "node_modules": true,
       "tsconfig.json": true,
       "README.md": true,
-      "package.json": false,
+      "package.json": true,
       ".gitignore": true,
-      ".eslintrc.json": false,
+      ".eslintrc.json": true,
       "public": true,
-      ".prettierrc.json": false,
+      ".prettierrc.json": true,
       "yarn.lock": true,
       "vite.config.ts": true,
       "tsconfig.node.json": true,
-      "index.html":false,
+      "index.html":true,
       "src/vite-env.d.ts": true
     }
-  } */
+  }
