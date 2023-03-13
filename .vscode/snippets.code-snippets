@@ -1,0 +1,6 @@
+{
+  "Import styles": {
+    "prefix": "ims",
+    "body": "import * as S from './styles'"
+  }
+}
