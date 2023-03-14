@@ -4,6 +4,7 @@ import { HeaderContainer, Locality, LocalityBadge } from './styles'
 import Logo from '@src/assets/logo.svg'
 import { MapPin } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
+import Text from '@components/core/Text'
 
 const IconMapPin = ({ size = 22 }) => (
   <MapPin
@@ -24,7 +25,7 @@ export const Header = () => {
       <Locality>
         <LocalityBadge>
           <IconMapPin />
-          <span>Fortaleza,CE</span>
+          <Text $scale={16}>Fortaleza,CE</Text>
         </LocalityBadge>
         <NavLink to={'/checkout'}>
           <ButtonCart />
