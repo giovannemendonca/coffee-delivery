@@ -20,7 +20,7 @@ export const LocalityBadge = styled.div`
   border-radius: 6px;
   padding: 10px 8px;
 
-  font-size: ${({ theme }) => theme.size[14]};
-  background: ${({ theme }) => theme.colors['purple-light']};
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  background: ${({ theme }) => theme.colors.purpleLight};
   color: ${({ theme }) => theme.colors.purple};
 `
