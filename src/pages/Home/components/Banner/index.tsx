@@ -29,7 +29,7 @@ export const Banner = () => {
   ]
 
   return (
-    <S.ContainerBanner>
+    <S.ContainerBanner >
       <S.Descriptions>
         <S.Header>
           <S.Title>Encontre o café perfeito para qualquer hora do dia</S.Title>
@@ -49,6 +49,8 @@ export const Banner = () => {
           alt='banner'
         />
       </S.ContaierImage>
+
+      
     </S.ContainerBanner>
   )
 }

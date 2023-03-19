@@ -8,7 +8,9 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <Router />
+        <div style={{padding: '0 8px'}}>
+          <Router />
+        </div>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>

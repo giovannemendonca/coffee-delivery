@@ -12,16 +12,26 @@ export const GlobalStyle = createGlobalStyle`
         width: 85%;
         margin: 0 auto;
         min-width: 280px;
-        @media(max-width: 350px){
+        max-width: 1600px;
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        @media(max-width: 900px){
             width: 100%;
-            padding: 0 8px;
+         
         }
     }
     body, input, textarea, button {
-        font-family:  ${({ theme }) => theme.typography.fontFamily.text}, sans-serif;
+        font-family:  ${({ theme }) =>
+          theme.typography.fontFamily.text}, sans-serif;
         font-weight: 400;
         font-size:  1rem;
-        background: ${({ theme }) => theme.colors.background}
+        background: ${({ theme }) => theme.colors.background};
+
+        @media(max-width: 1000px){
+            font-size: 0.8rem;
+        }
     }
 
 
