@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import backgraund from '@src/assets/img/background.svg'
 
 interface IconProps {
   icon: 'cart' | 'time' | 'package' | 'coffee'
@@ -15,6 +16,11 @@ const iconColors = {
 export const ContainerBanner = styled.header`
   display: flex;
   padding: 92px 0;
+  background: url(${backgraund}) no-repeat center;
+  background-size: cover;
+;
+
+
 
   @media (max-width: 1000px) {
     flex-direction: column-reverse;

@@ -6,7 +6,7 @@
       "package.json": true,
       ".gitignore": true,
       ".eslintrc.json": true,
-      "public": true,
+      "public": false,
       ".prettierrc.json": true,
       "yarn.lock": true,
       "vite.config.ts": true,
