@@ -5,6 +5,7 @@ interface IconProps {
   icon: 'cart' | 'time' | 'package' | 'coffee'
 }
 
+
 const iconColors = {
   cart: 'yellowDark',
   coffee: 'purple',

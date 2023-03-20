@@ -5,7 +5,7 @@ const ButtonCounter = () => {
   return (
     <S.Container>
         <button>-</button>
-        <span>5</span>
+        <span>0</span>
         <button>+</button>
     </S.Container>
   )

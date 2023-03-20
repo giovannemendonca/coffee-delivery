@@ -24,10 +24,9 @@ const CardProduct = (Props: CardProductProps) => {
       </S.ContainerImage>
 
       <S.ContainerInfo>
-        
         <div>
           {category.map((item, index) => (
-            <S.Category key={index} >{item}</S.Category>
+            <S.Category key={index}>{item}</S.Category>
           ))}
         </div>
         <Text
