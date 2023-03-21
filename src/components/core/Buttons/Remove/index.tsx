@@ -12,7 +12,7 @@ const ButtonRemove = ({ children }: Props) => {
   return (
     <S.Button>
       <Trash />
-      <Text $scale={12}>{children}</Text>
+      <Text $scale={10}>{children}</Text>
     </S.Button>
   )
 }

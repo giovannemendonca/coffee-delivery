@@ -22,7 +22,7 @@ const iconMap = {
       size={24}
     />
   ),
-  coffee: ( 
+  coffee: (
     <Coffee
       weight='fill'
       size={24}

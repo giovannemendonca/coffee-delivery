@@ -6,11 +6,11 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
 
-
+  max-height: 32px;
 
   border: 0;
   border-radius: 6px;
-  padding: 12px;
+  padding: 6px;
   border: none;
 
   cursor: pointer;

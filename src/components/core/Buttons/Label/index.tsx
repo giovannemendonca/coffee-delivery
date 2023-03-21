@@ -6,9 +6,9 @@ interface Props {
   children: React.ReactNode
 }
 
-export const Button = ({children}: Props) => {
+export const ButtonText = ({children}: Props) => {
   return (
-    <S.ButtonDefault>
+    <S.ButtonDefault type='submit'>
       <Text $bold $scale={12}>{children}</Text>
     </S.ButtonDefault>
   )
