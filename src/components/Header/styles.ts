@@ -5,6 +5,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 32px 0;
+
 `
 
 export const Locality = styled.div`
@@ -20,7 +21,7 @@ export const LocalityBadge = styled.div`
   border-radius: 6px;
   padding: 10px 8px;
 
-  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-size: ${({ theme }) => theme.typography.fontSize[16]};
   background: ${({ theme }) => theme.colors.purpleLight};
   color: ${({ theme }) => theme.colors.purple};
 `

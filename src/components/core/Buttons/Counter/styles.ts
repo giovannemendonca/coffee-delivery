@@ -5,17 +5,20 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 8px;
+  max-height: 32px;
 
   border-radius: 8px;
-  
+
   background: ${({ theme }) => theme.colors.baseButton};
 
-
-
   button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     padding: 8px;
     cursor: pointer;
+    max-height: inherit;
 
     font-size: ${({ theme }) => theme.typography.fontSize[24]};
 

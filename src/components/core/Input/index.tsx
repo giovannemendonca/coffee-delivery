@@ -1,9 +1,25 @@
-import React from 'react'
+import * as S from './styles'
+interface InputTextPros {
+  placeholder: string
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xg'
+  isOptional?: boolean
+}
 
-const Input = () => {
+const InputText = ({ placeholder, size, isOptional }: InputTextPros) => {
   return (
-    <div>Input</div>
+    <>
+      <S.Input
+        sizeWidth={size}
+        isOptional={isOptional}
+      >
+        <input
+          type='text'
+          placeholder={placeholder}
+        />
+        <span>Opicional</span>
+      </S.Input>
+    </>
   )
 }
 
-export default Input
+export default InputText
