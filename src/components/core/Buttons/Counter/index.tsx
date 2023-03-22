@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './styles'
 
-const ButtonCounter = () => {
+interface ButtonCounterProps {
+  handleCount?: (type: 'increment' | 'decrement' | null) => void
+  count?: number
+}
+
+const ButtonCounter = ({ count, handleCount }: ButtonCounterProps) => {
   return (
     <S.Container>
-        <button>-</button>
-        <span>0</span>
-        <button>+</button>
+      <button
+        onClick={() => {
+          handleCount && handleCount('decrement')
+        }}
+      >
+        -
+      </button>
+      <span>{count}</span>
+      <button
+        onClick={() => {
+          handleCount && handleCount('increment')
+        }}
+      >
+        +
+      </button>
     </S.Container>
   )
 }
