@@ -5,10 +5,15 @@ import CardProduct from './components/CardProduct'
 import * as S from './styles'
 
 import menu from '@src/data/menu.json'
+import { useContext } from 'react'
+import { CartContext } from '@src/contexts/ShoppingCartContext'
 
 const Home = () => {
   const theme = useTheme()
+  const {itens} = useContext(CartContext)
 
+  console.log(itens)
+  
   return (
     <>
       <Banner />
@@ -28,6 +33,7 @@ const Home = () => {
               />
             )
           })}
+
         </S.ContentCatalog>
       </S.ContainerCatalog>
     </>

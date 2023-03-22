@@ -7,9 +7,12 @@ import { ButtonText } from '@src/components/core/Buttons/Label'
 import ButtonPayment from '@src/components/core/Buttons/Payment'
 import ButtonCounter from '@src/components/core/Buttons/Counter'
 import ButtonRemove from '@src/components/core/Buttons/Remove'
+import { useContext } from 'react'
+import { CartContext } from '@src/contexts/ShoppingCartContext'
 
 const Checkout = () => {
   const theme = useTheme()
+  const { itens } = useContext(CartContext)
 
   return (
     <S.ContainerCheckout>
@@ -124,46 +127,31 @@ const Checkout = () => {
           Cafés selecionados
         </Text>
         <S.ContentCart>
-          <S.CartItem>
-            <img
-              style={{ width: '64px' }}
-              src={'/assets/coffee/expressTradicional.svg'}
-              alt=''
-            />
-            <div>
-              <Text $scale={16}>Expresso Tradicional</Text>
-              <div style={{ display: 'flex', gap: '6px' }}>
-                <ButtonCounter />
-                <ButtonRemove>Remover</ButtonRemove>
-              </div>
-            </div>
-            <Text
-              $bold
-              $scale={16}
-            >
-              R$ 9.90
-            </Text>
-          </S.CartItem>
-          <S.CartItem>
-            <img
-              style={{ width: '64px' }}
-              src={'/assets/coffee/expressTradicional.svg'}
-              alt=''
-            />
-            <div>
-              <Text $scale={16}>Expresso Tradicional</Text>
-              <div style={{ display: 'flex', gap: '6px' }}>
-                <ButtonCounter />
-                <ButtonRemove>Remover</ButtonRemove>
-              </div>
-            </div>
-            <Text
-              $bold
-              $scale={16}
-            >
-              R$ 9.90
-            </Text>
-          </S.CartItem>
+          {itens.map((item) => {
+            return (
+              <S.CartItem key={item.id}>
+  
+                <img
+                  style={{ width: '64px' }}
+                  src={item.path}
+                  alt=''
+                />
+                <div>
+                  <Text $scale={16}>{item.name}</Text>
+                  <div style={{ display: 'flex', gap: '6px' }}>
+                    <ButtonCounter />
+                    <ButtonRemove>Remover</ButtonRemove>
+                  </div>
+                </div>
+                <Text
+                  $bold
+                  $scale={16}
+                >
+                  R$ {item.price.toFixed(2)}
+                </Text>
+              </S.CartItem>
+            )
+          })}
           <div>
             <S.PriceContent>
               <Text $scale={16}>Total dos itens</Text>
