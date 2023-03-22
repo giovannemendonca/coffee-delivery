@@ -1,4 +1,4 @@
-{
+/* {
     "files.exclude": {
       "node_modules": true,
       "tsconfig.json": true,
@@ -6,7 +6,7 @@
       "package.json": true,
       ".gitignore": true,
       ".eslintrc.json": true,
-      "public": false,
+      "public": true,
       ".prettierrc.json": true,
       "yarn.lock": true,
       "vite.config.ts": true,
@@ -14,4 +14,4 @@
       "index.html":true,
       "src/vite-env.d.ts": true
     }
-  }
+  } */
