@@ -5,6 +5,7 @@ import * as S from './styles'
 import ButtonAdd from './components/ButtomAdd'
 import { useContext, useEffect, useState } from 'react'
 import { CartContext } from '@src/contexts/ShoppingCartContext'
+import useProducts from '../../Hooks/useProducts'
 
 interface CardProductProps {
   name: string
@@ -16,14 +17,10 @@ interface CardProductProps {
 }
 
 const CardProduct = (Props: CardProductProps) => {
-  const { addItemToCart } = useContext(CartContext)
-
-  const { name, category, description, price, path,id } = Props
+  const { name, category, description, price, path, id } = Props
   const theme = useTheme()
 
-  function AdicionarAoCarrinho() {
-    addItemToCart(Props)
-  }
+  const { AdicionarAoCarrinho, count, handleCount } = useProducts()
 
   return (
     <S.CardContainer>
@@ -61,8 +58,8 @@ const CardProduct = (Props: CardProductProps) => {
             R${price.toFixed(2)}
           </Text>
 
-          <ButtonCounter />
-          <ButtonAdd onClick={AdicionarAoCarrinho} />
+          <ButtonCounter count={count} handleCount={handleCount} />
+          <ButtonAdd  isAtive={count > 0} onClick={() => AdicionarAoCarrinho(Props)} />
         </S.PriceQuantity>
       </S.ContainerInfo>
     </S.CardContainer>

@@ -8,8 +8,8 @@ interface CartContextProviderProps {
 
 interface CartContextType {
   itens: Item[]
-  amountIntes: number
-   addItemToCart: (data: Item) => void
+  amountItens: number
+  addItemToCart: (data: Item) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -26,12 +26,12 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(addToCart(data))
   }
 
-  const amountIntes = useMemo(() => {
+  const amountItens = useMemo(() => {
     return itens.length
   }, [itens])
 
   return (
-    <CartContext.Provider value={{ itens, amountIntes, addItemToCart }}>
+    <CartContext.Provider value={{ itens, amountItens, addItemToCart }}>
       {children}
     </CartContext.Provider>
   )

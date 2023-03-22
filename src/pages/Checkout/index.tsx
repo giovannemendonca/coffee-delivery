@@ -130,7 +130,6 @@ const Checkout = () => {
           {itens.map((item) => {
             return (
               <S.CartItem key={item.id}>
-  
                 <img
                   style={{ width: '64px' }}
                   src={item.path}
@@ -139,7 +138,8 @@ const Checkout = () => {
                 <div>
                   <Text $scale={16}>{item.name}</Text>
                   <div style={{ display: 'flex', gap: '6px' }}>
-                    <ButtonCounter />
+                    <Text $bold>{item.quantity}</Text>
+                    <ButtonCounter count={item.quantity} />
                     <ButtonRemove>Remover</ButtonRemove>
                   </div>
                 </div>

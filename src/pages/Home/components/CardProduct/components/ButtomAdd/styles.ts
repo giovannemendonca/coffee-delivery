@@ -15,6 +15,10 @@ export const Button = styled.button`
 
   cursor: pointer;
 
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
 
   background: ${({ theme }) => theme.colors.purpleDark};
 
