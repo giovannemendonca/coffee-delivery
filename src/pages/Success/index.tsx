@@ -1,11 +1,24 @@
-import React from 'react'
 import * as S from './styles'
 import sucess from '@src/assets/img/sucess.svg'
 import Text from '@src/components/core/Text'
 import { useTheme } from 'styled-components'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useContext } from 'react'
+import { CartContext } from '@src/contexts/ShoppingCartContext'
 const Sucess = () => {
   const theme = useTheme()
+
+  const { cartState } = useContext(CartContext)
+
+  console.log(cartState)
+
+  const { address, SelectedPayment } = cartState
+
+  const payment = {
+    credit: 'Cartão de crédito',
+    debit: 'Cartão de débito',
+    money: 'Dinheiro'
+  }
 
   return (
     <S.ContainerSuccess>
@@ -30,10 +43,18 @@ const Sucess = () => {
                 color={theme.colors.white}
               />
             </S.Icon>
-            <div>
-              Entrega em <S.Span>Rua João Daniel Martinelli, 102</S.Span>
-              <Text> Farrapos - Porto Alegre, RS</Text>
-            </div>
+            {address && (
+              <div>
+                Entrega em{' '}
+                <S.Span>
+                  {address.rua}, {address.numero}
+                </S.Span>
+                <Text $scale={16}>
+                  {' '}
+                  {address.bairro} - {address.cidade}, {address.uf}
+                </Text>
+              </div>
+            )}
           </S.DataOrder>
 
           <S.DataOrder>
@@ -60,7 +81,7 @@ const Sucess = () => {
             </S.Icon>
             <div>
               <Text>Pagamento na entrega</Text>
-              <Text $bold>Cartão de Crédito</Text>
+              <Text $bold>{payment[SelectedPayment]}</Text>
             </div>
           </S.DataOrder>
         </S.DescribleOrders>

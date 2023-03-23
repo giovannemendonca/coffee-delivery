@@ -58,8 +58,16 @@ const CardProduct = (Props: CardProductProps) => {
             R${price.toFixed(2)}
           </Text>
 
-          <ButtonCounter count={count} handleCount={handleCount} />
-          <ButtonAdd  isAtive={count > 0} onClick={() => AdicionarAoCarrinho(Props)} />
+          <ButtonCounter
+            count={count}
+            handleCount={handleCount}
+          />
+          <ButtonAdd
+            isAtive={count > 0}
+            onClick={() =>
+              AdicionarAoCarrinho({ ...Props, quantity: 0, valueTotal: 0 })
+            }
+          />
         </S.PriceQuantity>
       </S.ContainerInfo>
     </S.CardContainer>
