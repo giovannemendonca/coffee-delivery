@@ -1,21 +1,29 @@
-import Text from '@src/components/core/Text'
-import { useTheme } from 'styled-components'
-import * as S from './styles'
-import { CurrencyDollar, MapPinLine } from 'phosphor-react'
-import InputText from '@src/components/core/Input'
-import { ButtonText } from '@src/components/core/Buttons/Label'
-import ButtonPayment from '@src/components/core/Buttons/Payment'
-import ButtonCounter from '@src/components/core/Buttons/Counter'
-import ButtonRemove from '@src/components/core/Buttons/Remove'
 import { useContext } from 'react'
 import { CartContext } from '@src/contexts/ShoppingCartContext'
+import { useTheme } from 'styled-components'
+import { CurrencyDollar, MapPinLine } from 'phosphor-react'
+import useCheckout from './hooks/useCheckout'
+
+import * as S from './styles'
+
+import Text from '@src/components/core/Text'
+import FormControl from './components/FormControl'
+import { ButtonText } from '@src/components/core/Buttons/Label'
+import ButtonCounter from '@src/components/core/Buttons/Counter'
+import ButtonPayment from '@src/components/core/Buttons/Payment'
+import ButtonRemove from '@src/components/core/Buttons/Remove'
 
 const Checkout = () => {
   const theme = useTheme()
-  const { itens } = useContext(CartContext)
+
+  const { itens, addFormPayment, SelectedPayment } = useContext(CartContext)
+
+  const { onSubmit, endressForm, FormProvider, handleSubmit } = useCheckout()
+ 
+
 
   return (
-    <S.ContainerCheckout>
+    <S.ContainerCheckout onSubmit={handleSubmit(onSubmit)}>
       <S.SectionAddress>
         <Text
           $bold
@@ -47,49 +55,9 @@ const Checkout = () => {
               </div>
             </S.HeaderContent>
             <div>
-              <S.Form>
-                <S.InputContainer>
-                  <InputText
-                    placeholder='CEP'
-                    size='sm'
-                  />
-                </S.InputContainer>
-
-                <S.InputContainer>
-                  <InputText
-                    placeholder='Rua'
-                    size='xg'
-                  />
-                </S.InputContainer>
-
-                <S.InputContainer>
-                  <InputText
-                    placeholder='Número'
-                    size='xg'
-                  />
-
-                  <InputText
-                    placeholder='Complemento'
-                    size='xg'
-                    isOptional
-                  />
-                </S.InputContainer>
-
-                <S.InputContainer>
-                  <InputText
-                    placeholder='Bairro'
-                    size='xg'
-                  />
-                  <InputText
-                    placeholder='Cidade'
-                    size='xg'
-                  />
-                  <InputText
-                    placeholder='UF'
-                    size='xg'
-                  />
-                </S.InputContainer>
-              </S.Form>
+              <FormProvider {...endressForm}>
+                <FormControl />
+              </FormProvider>
             </div>
           </div>
         </S.Content>
@@ -112,9 +80,27 @@ const Checkout = () => {
           </div>
 
           <S.BottonsPayment>
-            <ButtonPayment payment='credit'>Cartão de crédito</ButtonPayment>
-            <ButtonPayment payment='debit'>Cartão de crédito</ButtonPayment>
-            <ButtonPayment payment='money'>Cartão de crédito</ButtonPayment>
+            <ButtonPayment
+              addFormPayment={addFormPayment}
+              payment='credit'
+              selected={SelectedPayment === 'credit'}
+            >
+              Cartão de crédito
+            </ButtonPayment>
+            <ButtonPayment
+              addFormPayment={addFormPayment}
+              payment='debit'
+              selected={SelectedPayment === 'debit'}
+            >
+              Cartão de crédito
+            </ButtonPayment>
+            <ButtonPayment
+              addFormPayment={addFormPayment}
+              payment='money'
+              selected={SelectedPayment === 'money'}
+            >
+              Cartão de crédito
+            </ButtonPayment>
           </S.BottonsPayment>
         </S.Content>
       </S.SectionAddress>
@@ -138,7 +124,6 @@ const Checkout = () => {
                 <div>
                   <Text $scale={16}>{item.name}</Text>
                   <div style={{ display: 'flex', gap: '6px' }}>
-                    <Text $bold>{item.quantity}</Text>
                     <ButtonCounter count={item.quantity} />
                     <ButtonRemove>Remover</ButtonRemove>
                   </div>

@@ -8,11 +8,13 @@ export interface Item {
   path: string
   price: number
   quantity?: number
+  payment?: string
 }
 
 interface CartState {
   itens: Item[]
-  address: string | null
+  address: string | null,
+  SelectedPayment?: 'credit' | 'debit' | 'money' | ''
 }
 
 export default function cartReduce(state: CartState, action: any) {
@@ -22,9 +24,17 @@ export default function cartReduce(state: CartState, action: any) {
       return {
         ...state,
         itens: [...state.itens, action.payload.item],
-        address: 'foo'
       }
     }
+
+    case ActionTypes.ADD_FORM_PAYMENT: {
+      return {
+        ...state,
+        SelectedPayment: action.payload.form
+      }
+    }
+
     default: return state
   }
+
 }

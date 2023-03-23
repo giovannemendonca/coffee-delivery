@@ -7,9 +7,16 @@ import Text from '@components/core/Text'
 interface ButtonPaymentProps {
   children: React.ReactNode
   payment: 'credit' | 'debit' | 'money'
+  selected: boolean
+  addFormPayment: (payment: 'credit' | 'debit' | 'money') => void
 }
 
-const ButtonPayment = ({ children, payment }: ButtonPaymentProps) => {
+const ButtonPayment = ({
+  children,
+  payment,
+  addFormPayment,
+  selected
+}: ButtonPaymentProps) => {
   const theme = useTheme()
 
   const iconsPayament = {
@@ -34,10 +41,15 @@ const ButtonPayment = ({ children, payment }: ButtonPaymentProps) => {
   } as const
 
   return (
-    <S.Button>
+    <S.Button
+      isSelected={selected}
+      onClick={() => addFormPayment(payment)}
+    >
       {iconsPayament[payment]}
-      <Text $scale={12} >{children}</Text>
+      <Text $scale={12}>{children}</Text>
     </S.Button>
+
+
   )
 }
 
