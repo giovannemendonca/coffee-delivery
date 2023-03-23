@@ -5,6 +5,7 @@ import CardProduct from './components/CardProduct'
 import * as S from './styles'
 
 import menu from '@src/data/menu.json'
+import { useState } from 'react'
 
 const Home = () => {
   const theme = useTheme()

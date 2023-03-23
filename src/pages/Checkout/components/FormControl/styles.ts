@@ -1,16 +1,36 @@
 import styled from 'styled-components'
+
 interface SizeProps {
   sizeWidth: 'xs' | 'sm' | 'md' | 'lg' | 'xg'
   isOptional?: boolean
 }
 
 const Size = {
-  xs: '40',
+  xs: '20',
   sm: '40',
   md: '40',
   lg: '70',
   xg: '100'
 }
+
+export const FormContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+
+  margin-top: 1.8rem;
+`
+
+export const InputContainer = styled.div`
+  display: flex;
+  gap: 0.75rem;
+
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
+`
 
 export const Input = styled.input<SizeProps>`
   position: relative;
@@ -29,14 +49,4 @@ export const Input = styled.input<SizeProps>`
   &::selection {
     border: none;
   }
-`
-export const Span = styled.span`
-  display: none;
-  position: absolute;
-  top: 14px;
-  right: 8px;
-
-  font-size: 0.6rem;
-
-  color: ${({ theme }) => theme.colors.baseText};
 `

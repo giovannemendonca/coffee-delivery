@@ -1,6 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Button = styled.div`
+interface Selected {
+  isSelected: boolean
+}
+
+export const Button = styled.div<Selected>`
   display: flex;
   gap: 1rem;
 
@@ -12,9 +16,13 @@ export const Button = styled.div`
 
   background: ${({ theme }) => theme.colors.baseButton};
 
-  :hover {
-    background: ${({ theme }) => theme.colors.purpleLight};
-    border: 1px solid ${({ theme }) => theme.colors.purple};
-  }
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      background: ${({ theme }) => theme.colors.purpleLight};
+      border: 1px solid ${({ theme }) => theme.colors.purple};
+    `}
 
+  :active {
+  }
 `

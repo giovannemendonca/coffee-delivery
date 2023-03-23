@@ -3,21 +3,32 @@ interface InputTextPros {
   placeholder: string
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xg'
   isOptional?: boolean
+  defaultValue?: string
+  register?: any
+  handleDataEddress?: (cep: string) => void
 }
 
-const InputText = ({ placeholder, size, isOptional }: InputTextPros) => {
+const InputText = ({
+  placeholder,
+  size,
+  isOptional,
+  handleDataEddress,
+  defaultValue
+}: InputTextPros) => {
   return (
     <>
       <S.Input
         sizeWidth={size}
         isOptional={isOptional}
-      >
-        <input
-          type='text'
-          placeholder={placeholder}
-        />
-        <span>Opicional</span>
-      </S.Input>
+        placeholder={placeholder}
+        type='text'
+        defaultValue={defaultValue}
+        onBlur={(e) => {
+          if (handleDataEddress) {
+            handleDataEddress(e.target.value)
+          }
+        }}
+      />
     </>
   )
 }
