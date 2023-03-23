@@ -6,6 +6,11 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 32px 0;
 
+  @media (max-width: 900px) {
+    padding: 32px 16px;
+  }
+
+
 `
 
 export const Locality = styled.div`

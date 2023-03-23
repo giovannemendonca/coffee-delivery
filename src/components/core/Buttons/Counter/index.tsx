@@ -5,7 +5,7 @@ import * as S from './styles'
 interface ButtonCounterProps {
   handleCount?: (type: 'increment' | 'decrement' | null) => void
   count: number
-  id: string
+  id?: string
 }
 
 const ButtonCounter = ({ count, handleCount, id }: ButtonCounterProps) => {
@@ -18,7 +18,9 @@ const ButtonCounter = ({ count, handleCount, id }: ButtonCounterProps) => {
         type='button'
         onClick={() => {
           handleCount && handleCount('decrement')
-          manipulateQuantity(id, 'decrement')
+          {
+            id && manipulateQuantity(id, 'decrement')
+          }
         }}
       >
         -
@@ -28,7 +30,9 @@ const ButtonCounter = ({ count, handleCount, id }: ButtonCounterProps) => {
         type='button'
         onClick={() => {
           handleCount && handleCount('increment')
-          manipulateQuantity(id, 'increment')
+          {
+            id && manipulateQuantity(id, 'increment')
+          }
         }}
       >
         +

@@ -84,6 +84,7 @@ export const ShopingCardContent = styled.section`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  min-width: fit-content;
 
   p {
     color: ${({ theme }) => theme.colors.baseSubtitle};

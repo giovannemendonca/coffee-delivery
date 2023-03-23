@@ -16,14 +16,11 @@ import ButtonRemove from '@src/components/core/Buttons/Remove'
 const Checkout = () => {
   const theme = useTheme()
 
-  const {
-    itens,
-    addFormPayment,
-    SelectedPayment,
-    removeItemCart,
-  } = useContext(CartContext)
+  const { itens, addFormPayment, SelectedPayment, removeItemCart, sumTotal, cartState } =
+    useContext(CartContext)
 
   const { onSubmit, endressForm, FormProvider, handleSubmit } = useCheckout()
+
 
   return (
     <S.ContainerCheckout onSubmit={handleSubmit(onSubmit)}>
@@ -148,7 +145,7 @@ const Checkout = () => {
           <div>
             <S.PriceContent>
               <Text $scale={16}>Total dos itens</Text>
-              <Text $scale={16}>R$ 29,70</Text>
+              <Text $scale={16}>R$ {sumTotal.toFixed(2)}</Text>
             </S.PriceContent>
             <S.PriceContent>
               <Text $scale={16}>Entrega</Text>
@@ -165,7 +162,7 @@ const Checkout = () => {
                 $bold
                 $scale={16}
               >
-                R$ 33,20
+                R$ {(sumTotal + 3.5).toFixed(2)}
               </Text>
             </S.PriceContent>
           </div>

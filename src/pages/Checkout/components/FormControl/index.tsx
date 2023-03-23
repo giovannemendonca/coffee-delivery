@@ -27,7 +27,7 @@ const FormControl = () => {
       </S.InputContainer>
       <S.InputContainer>
         <S.Input
-          sizeWidth='lg'
+          sizeWidth='xg'
           placeholder='Número'
           {...register('numero')}
         />

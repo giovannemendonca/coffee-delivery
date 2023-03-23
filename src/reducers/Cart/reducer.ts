@@ -8,17 +8,34 @@ export interface Item {
   path: string
   price: number
   quantity: number
-  payment?: string
-  valueTotal?: number
+  payment?: 'credit' | 'debit' | 'money'
+  valueTotal: number
 }
 
-interface CartState {
+interface Address {
+  cep: string
+  rua: string
+  bairro: string
+  cidade: string
+  numero: string
+  estado: string
+  uf: string
+}
+
+export interface CartState {
   itens: Item[]
-  address: string | null
-  SelectedPayment?: 'credit' | 'debit' | 'money' | ''
+  address: Address | null
+  SelectedPayment: 'credit' | 'debit' | 'money'
 }
 
-export default function cartReduce(state: CartState, action: any) {
+export default function cartReduce(
+  state: CartState,
+  action: any
+): {
+  itens: Item[]
+  address: Address | null
+  SelectedPayment: 'credit' | 'debit' | 'money'
+} {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {
       return {
@@ -65,6 +82,12 @@ export default function cartReduce(state: CartState, action: any) {
           }
           return item
         })
+      }
+    }
+    case ActionTypes.ADD_ENDDRESS: {
+      return{
+        ...state,
+        address: action.payload.address
       }
     }
 
