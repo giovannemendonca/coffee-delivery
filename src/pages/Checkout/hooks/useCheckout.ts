@@ -20,7 +20,7 @@ const useCheckout = () => {
     data.error ? alert('CEP não encontrado') : setDataEddresApi(data)
   }
 
-  const onSubmit = (data: CartState) => {
+  const onSubmit = (data: any) => {
     const order = data
 
     addFormEndress(order)
