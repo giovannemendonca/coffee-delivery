@@ -6,9 +6,9 @@ export const ButtonCart = () => {
   const { amountItens } = useContext(CartContext)
 
   return (
-    <S.CartButton>
-      <S.CartIcon />
-      <S.CounterItem>{amountItens}</S.CounterItem>
-    </S.CartButton>
+      <S.CartButton>
+        <S.CartIcon />
+        {amountItens > 0 && <S.CounterItem>{amountItens}</S.CounterItem>}
+      </S.CartButton>
   )
 }

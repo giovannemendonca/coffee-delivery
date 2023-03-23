@@ -16,7 +16,7 @@ export function useProducts() {
       count > 0 ? setCount((old) => old - 1) : setCount(0)
     }
   }
-  function handleCount(type: 'increment' | 'decrement' | null) {
+  function handleCount(type: 'increment' | 'decrement') {
     type === 'increment' ? increment() : decrement()
   }
 
