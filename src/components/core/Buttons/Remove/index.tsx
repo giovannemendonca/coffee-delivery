@@ -6,11 +6,15 @@ import { Trash } from 'phosphor-react'
 
 interface Props {
   children: ReactNode
+  onClick: () => void
 }
 
-const ButtonRemove = ({ children }: Props) => {
+const ButtonRemove = ({ children, onClick }: Props) => {
   return (
-    <S.Button>
+    <S.Button
+      type='button'
+      onClick={onClick}
+    >
       <Trash />
       <Text $scale={10}>{children}</Text>
     </S.Button>

@@ -1,4 +1,9 @@
-import { addToCart, addPayment } from '@src/reducers/Cart/actions'
+import {
+  addToCart,
+  addPayment,
+  removeItemToCart,
+  manipulateItemQuantity
+} from '@src/reducers/Cart/actions'
 import cartReduce, { Item } from '@src/reducers/Cart/reducer'
 import { createContext, useMemo, useReducer } from 'react'
 
@@ -11,6 +16,8 @@ interface CartContextType {
   amountItens: number
   SelectedPayment: 'credit' | 'debit' | 'money'
   addFormPayment(data: 'credit' | 'debit' | 'money'): void
+  removeItemCart(id: string): void
+  manipulateQuantity(id: string, action: 'increment' | 'decrement'): void
   addItemToCart: (data: Item) => void
 }
 
@@ -23,15 +30,22 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     SelectedPayment: ''
   })
 
-  const { itens, address, SelectedPayment } = itensState
+  const { itens, SelectedPayment } = itensState
 
   function addItemToCart(data: Item) {
     dispatch(addToCart(data))
   }
 
+  function removeItemCart(id: string) {
+    dispatch(removeItemToCart(id))
+  }
+
   function addFormPayment(data: 'credit' | 'debit' | 'money') {
-    console.log(data)
     dispatch(addPayment(data))
+  }
+
+  function manipulateQuantity(id: string, action: 'increment' | 'decrement') {
+    dispatch(manipulateItemQuantity(id, action))
   }
 
   const amountItens = useMemo(() => {
@@ -40,7 +54,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   return (
     <CartContext.Provider
-      value={{ itens, amountItens, addItemToCart, addFormPayment, SelectedPayment }}
+      value={{
+        itens,
+        amountItens,
+        addItemToCart,
+        addFormPayment,
+        SelectedPayment,
+        removeItemCart,
+        manipulateQuantity
+      }}
     >
       {children}
     </CartContext.Provider>
