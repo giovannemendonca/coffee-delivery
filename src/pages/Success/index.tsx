@@ -8,10 +8,7 @@ import { CartContext } from '@src/contexts/ShoppingCartContext'
 const Sucess = () => {
   const theme = useTheme()
 
-  const { cartState } = useContext(CartContext)
-
-
-  const { address, SelectedPayment } = cartState
+  const { newOrder } = useContext(CartContext)
 
   const payment = {
     credit: 'Cartão de crédito',
@@ -22,7 +19,7 @@ const Sucess = () => {
   return (
     <S.ContainerSuccess>
       <S.InfosOrder>
-        <S.ContentTitle>  
+        <S.ContentTitle>
           <S.MainTitle
             $scale={32}
             $bold
@@ -42,15 +39,16 @@ const Sucess = () => {
                 color={theme.colors.white}
               />
             </S.Icon>
-            {address && (
+            {newOrder && (
               <div>
                 Entrega em{' '}
                 <S.Span>
-                  {address.rua}, {address.numero}
+                  {newOrder.address?.rua}, {newOrder.address?.numero}
                 </S.Span>
                 <Text $scale={16}>
                   {' '}
-                  {address.bairro} - {address.cidade}, {address.uf}
+                  {newOrder.address?.bairro} - {newOrder.address?.cidade},{' '}
+                  {newOrder.address?.estado}{' '}
                 </Text>
               </div>
             )}
@@ -80,7 +78,9 @@ const Sucess = () => {
             </S.Icon>
             <div>
               <Text>Pagamento na entrega</Text>
-              <Text $bold>{payment[SelectedPayment]}</Text>
+              {newOrder?.SelectedPayment && (
+                <Text $bold>{payment[newOrder.SelectedPayment]}</Text>
+              )}
             </div>
           </S.DataOrder>
         </S.DescribleOrders>

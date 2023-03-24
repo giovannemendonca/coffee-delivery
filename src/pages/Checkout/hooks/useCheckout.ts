@@ -21,10 +21,9 @@ const useCheckout = () => {
   }
 
   const onSubmit = (data: any) => {
-    const order = data
-
-    addFormEndress(order)
+    addFormEndress(data)
     navigate('/sucess')
+ /*    removeAllCart() */
   }
 
   return {

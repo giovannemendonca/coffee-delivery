@@ -5,7 +5,7 @@ import * as S from './styles'
 const FormControl = () => {
   const { handleDataEddress, dataEddressApi } = useCheckout()
 
-    const { register } = useFormContext()
+  const { register } = useFormContext()
 
   return (
     <S.FormContent>

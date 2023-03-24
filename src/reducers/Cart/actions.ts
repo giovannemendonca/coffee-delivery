@@ -5,7 +5,8 @@ export enum ActionTypes {
   ADD_FORM_PAYMENT = 'ADD_FORM_PAYMENT',
   REMOVE_ITEM_TO_CART = 'REMOVE_ITEM_TO_CART',
   MANIPULATE_ITEM_QUANTITY = 'MANIPULATE_ITEM_QUANTITY',
-  ADD_ENDDRESS = 'ADD_ENDDRESS'
+  ADD_ENDDRESS = 'ADD_ENDDRESS',
+  CLEAR_CART = 'CLEAR_CART'
 }
 
 export function addToCart(item: Item) {
@@ -47,11 +48,19 @@ export function manipulateItemQuantity(
     }
   }
 }
+
 export function addEddress(address: any) {
   return {
     type: ActionTypes.ADD_ENDDRESS,
     payload: {
       address
     }
+  }
+}
+
+
+export function clearCart() {
+  return {
+    type: ActionTypes.CLEAR_CART
   }
 }
