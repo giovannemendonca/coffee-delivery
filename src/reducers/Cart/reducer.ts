@@ -85,9 +85,17 @@ export default function cartReduce(
       }
     }
     case ActionTypes.ADD_ENDDRESS: {
-      return{
+      return {
         ...state,
         address: action.payload.address
+      }
+    }
+    case ActionTypes.CLEAR_CART: {
+      return {
+        ...state,
+        itens: [],
+        address: null,
+        SelectedPayment: 'credit'
       }
     }
 

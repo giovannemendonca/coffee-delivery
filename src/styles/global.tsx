@@ -2,6 +2,14 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
     
+    :root {
+        font-size: 16px;
+
+        @media(max-width: 600px){
+            font-size: 14px;
+        }
+    }
+
     *{
         padding: 0;
         margin: 0;

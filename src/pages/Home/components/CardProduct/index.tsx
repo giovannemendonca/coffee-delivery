@@ -3,8 +3,6 @@ import Text from '@src/components/core/Text'
 import { useTheme } from 'styled-components'
 import * as S from './styles'
 import ButtonAdd from './components/ButtomAdd'
-import { useContext, useEffect, useState } from 'react'
-import { CartContext } from '@src/contexts/ShoppingCartContext'
 import useProducts from '../../Hooks/useProducts'
 
 interface CardProductProps {
@@ -17,7 +15,7 @@ interface CardProductProps {
 }
 
 const CardProduct = (Props: CardProductProps) => {
-  const { name, category, description, price, path, id } = Props
+  const { name, category, description, price, path } = Props
   const theme = useTheme()
 
   const { AdicionarAoCarrinho, count, handleCount } = useProducts()

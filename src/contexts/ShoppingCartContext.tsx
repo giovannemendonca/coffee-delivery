@@ -3,10 +3,11 @@ import {
   addPayment,
   removeItemToCart,
   manipulateItemQuantity,
-  addEddress
+  addEddress,
+  clearCart
 } from '@src/reducers/Cart/actions'
 import cartReduce, { CartState, Item } from '@src/reducers/Cart/reducer'
-import { createContext,  useMemo, useReducer } from 'react'
+import { createContext, useMemo, useReducer, useState } from 'react'
 
 interface CartContextProviderProps {
   children: React.ReactNode
@@ -17,6 +18,7 @@ interface CartContextType {
   SelectedPayment: 'credit' | 'debit' | 'money'
   sumTotal: number
   cartState: CartState
+  newOrder: CartState | null
   addFormPayment(data: 'credit' | 'debit' | 'money'): void
   removeItemCart(id: string): void
   manipulateQuantity(id: string, action: 'increment' | 'decrement'): void
@@ -33,7 +35,9 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     SelectedPayment: 'credit'
   })
 
-  const { itens, SelectedPayment } = cartState
+  const [newOrder, setNewOrder] = useState<CartState | null>(null)
+
+  const { itens, SelectedPayment, address } = cartState
 
   function addItemToCart(data: Item) {
     dispatch(addToCart(data))
@@ -53,6 +57,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   function addFormEndress(data: any) {
     dispatch(addEddress(data))
+
+    setNewOrder({
+      itens,
+      SelectedPayment,
+      address: data
+    })
+
+    dispatch(clearCart())
   }
 
   const amountItens = useMemo(() => {
@@ -77,7 +89,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         manipulateQuantity,
         sumTotal,
         addFormEndress,
-        cartState
+        cartState,
+        newOrder
       }}
     >
       {children}
