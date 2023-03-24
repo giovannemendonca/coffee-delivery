@@ -1,6 +1,6 @@
 import Text from '@src/components/core/Text'
 import * as S from './styles'
-import Imagem from '@src/assets/img/imagemBanner.svg'
+import imagem from '/assets/imagemBanner.png'
 import { BenefitsList } from './BenefitsList'
 
 export interface IconItem {
@@ -45,7 +45,7 @@ export const Banner = () => {
 
       <S.ContaierImage>
         <img
-          src={Imagem}
+          src={imagem}
           alt='banner'
         />
       </S.ContaierImage>

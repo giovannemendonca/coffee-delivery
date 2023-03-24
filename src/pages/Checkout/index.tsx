@@ -27,8 +27,6 @@ const Checkout = () => {
 
   const { onSubmit, endressForm, FormProvider, handleSubmit } = useCheckout()
 
-  console.log(cartState)  
-
   return (
     <S.ContainerCheckout onSubmit={handleSubmit(onSubmit)}>
       <S.SectionAddress>

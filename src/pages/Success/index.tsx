@@ -10,7 +10,6 @@ const Sucess = () => {
 
   const { cartState } = useContext(CartContext)
 
-  console.log(cartState)
 
   const { address, SelectedPayment } = cartState
 
@@ -23,7 +22,7 @@ const Sucess = () => {
   return (
     <S.ContainerSuccess>
       <S.InfosOrder>
-        <S.ContentTitle>
+        <S.ContentTitle>  
           <S.MainTitle
             $scale={32}
             $bold
