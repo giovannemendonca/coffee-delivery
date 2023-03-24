@@ -23,9 +23,11 @@ export const ContentCatalog = styled.div`
 
   gap: 3rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 4rem;
+
+    padding: 0 1rem;
   }
 `

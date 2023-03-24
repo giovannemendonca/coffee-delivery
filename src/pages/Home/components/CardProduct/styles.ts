@@ -26,6 +26,8 @@ export const CardContainer = styled.div`
 
   @media (max-width: 768px) {
     margin-bottom: 2rem;
+    justify-content: center;
+    gap: 8rem;
   }
 
 `
