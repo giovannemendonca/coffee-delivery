@@ -16,11 +16,18 @@ import ButtonRemove from '@src/components/core/Buttons/Remove'
 const Checkout = () => {
   const theme = useTheme()
 
-  const { itens, addFormPayment, SelectedPayment, removeItemCart, sumTotal, cartState } =
-    useContext(CartContext)
+  const {
+    itens,
+    addFormPayment,
+    SelectedPayment,
+    removeItemCart,
+    sumTotal,
+    cartState
+  } = useContext(CartContext)
 
   const { onSubmit, endressForm, FormProvider, handleSubmit } = useCheckout()
 
+  console.log(cartState)  
 
   return (
     <S.ContainerCheckout onSubmit={handleSubmit(onSubmit)}>
@@ -92,14 +99,14 @@ const Checkout = () => {
               payment='debit'
               selected={SelectedPayment === 'debit'}
             >
-              Cartão de crédito
+              Cartão de debito
             </ButtonPayment>
             <ButtonPayment
               addFormPayment={addFormPayment}
               payment='money'
               selected={SelectedPayment === 'money'}
             >
-              Cartão de crédito
+              Dinheiro
             </ButtonPayment>
           </S.BottonsPayment>
         </S.Content>
