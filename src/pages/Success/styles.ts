@@ -17,8 +17,10 @@ export const ContainerSuccess = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
+  max-height: 100vh;
+
   margin: 0 auto;
-  padding: 6rem 0;
+  padding: 6rem 1rem;
 
   @media (max-width: 900px) {
     flex-direction: column-reverse;
@@ -44,6 +46,7 @@ export const InfosOrder = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 1rem;
 
   gap: 2rem;
 `

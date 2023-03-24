@@ -25,6 +25,7 @@ export const ContainerBanner = styled.header`
 
   @media (max-width: 1000px) {
     flex-direction: column-reverse;
+    padding: 1rem;
   }
 `
 
