@@ -4,7 +4,6 @@ interface InputTextPros {
   size: 'xs' | 'sm' | 'md' | 'lg' | 'xg'
   isOptional?: boolean
   defaultValue?: string
-  register?: any
   handleDataEddress?: (cep: string) => void
 }
 

@@ -1,40 +1,22 @@
+import { Address, CartState, Item, paymentTypes } from '@src/interfaces'
+import { newAddressFormData } from '@src/pages/Checkout/hooks/useCheckout'
 import { ActionTypes } from './actions'
 
-export interface Item {
-  id: string
-  name: string
-  category: string[]
-  description: string
-  path: string
-  price: number
-  quantity: number
-  payment?: 'credit' | 'debit' | 'money'
-  valueTotal: number
+
+interface IAction {
+  type: string,
+  payload?: any
 }
 
-interface Address {
-  cep: string
-  rua: string
-  bairro: string
-  cidade: string
-  numero: string
-  estado: string
-  uf: string
-}
 
-export interface CartState {
-  itens: Item[]
-  address: Address | null
-  SelectedPayment: 'credit' | 'debit' | 'money'
-}
 
 export default function cartReduce(
   state: CartState,
-  action: any
+  action: IAction
 ): {
   itens: Item[]
-  address: Address | null
-  SelectedPayment: 'credit' | 'debit' | 'money'
+  address: newAddressFormData | null
+  SelectedPayment: paymentTypes
 } {
   switch (action.type) {
     case ActionTypes.ADD_TO_CART: {

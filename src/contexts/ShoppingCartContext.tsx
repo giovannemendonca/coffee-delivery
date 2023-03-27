@@ -1,3 +1,5 @@
+import {CartState, IncDecTypes, Item, paymentTypes } from '@src/interfaces'
+import { newAddressFormData } from '@src/pages/Checkout/hooks/useCheckout'
 import {
   addToCart,
   addPayment,
@@ -6,7 +8,7 @@ import {
   addEddress,
   clearCart
 } from '@src/reducers/Cart/actions'
-import cartReduce, { CartState, Item } from '@src/reducers/Cart/reducer'
+import cartReduce from '@src/reducers/Cart/reducer'
 import { createContext, useMemo, useReducer, useState } from 'react'
 
 interface CartContextProviderProps {
@@ -15,15 +17,15 @@ interface CartContextProviderProps {
 interface CartContextType {
   itens: Item[]
   amountItens: number
-  SelectedPayment: 'credit' | 'debit' | 'money'
+  SelectedPayment: paymentTypes
   sumTotal: number
   cartState: CartState
   newOrder: CartState | null
-  addFormPayment(data: 'credit' | 'debit' | 'money'): void
+  addFormPayment(data: paymentTypes): void
   removeItemCart(id: string): void
-  manipulateQuantity(id: string, action: 'increment' | 'decrement'): void
+  manipulateQuantity(id: string, action: IncDecTypes): void
   addItemToCart: (data: Item) => void
-  addFormEndress: (data: any) => void
+  addFormEndress: (data: newAddressFormData) => void
 }
 
 export const CartContext = createContext({} as CartContextType)
@@ -37,7 +39,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
   const [newOrder, setNewOrder] = useState<CartState | null>(null)
 
-  const { itens, SelectedPayment, address } = cartState
+  const { itens, SelectedPayment } = cartState
 
   function addItemToCart(data: Item) {
     dispatch(addToCart(data))
@@ -47,15 +49,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch(removeItemToCart(id))
   }
 
-  function addFormPayment(data: 'credit' | 'debit' | 'money') {
+  function addFormPayment(data: paymentTypes) {
     dispatch(addPayment(data))
   }
 
-  function manipulateQuantity(id: string, action: 'increment' | 'decrement') {
+  function manipulateQuantity(id: string, action: IncDecTypes) {
     dispatch(manipulateItemQuantity(id, action))
   }
 
-  function addFormEndress(data: any) {
+  function addFormEndress(data: newAddressFormData) {
     dispatch(addEddress(data))
 
     setNewOrder({

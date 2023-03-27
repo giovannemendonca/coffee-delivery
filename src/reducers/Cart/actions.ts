@@ -1,4 +1,5 @@
-import { Item } from './reducer'
+import { IncDecTypes, Item, paymentTypes } from '@src/interfaces'
+import { newAddressFormData } from '@src/pages/Checkout/hooks/useCheckout'
 
 export enum ActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
@@ -18,7 +19,7 @@ export function addToCart(item: Item) {
   }
 }
 
-export function addPayment(form: 'credit' | 'debit' | 'money' | 'debit') {
+export function addPayment(form: paymentTypes ) {
   return {
     type: ActionTypes.ADD_FORM_PAYMENT,
     payload: {
@@ -38,7 +39,7 @@ export function removeItemToCart(id: string) {
 
 export function manipulateItemQuantity(
   id: string,
-  actionHandle: 'increment' | 'decrement'
+  actionHandle: IncDecTypes
 ) {
   return {
     type: ActionTypes.MANIPULATE_ITEM_QUANTITY,
@@ -49,7 +50,7 @@ export function manipulateItemQuantity(
   }
 }
 
-export function addEddress(address: any) {
+export function addEddress(address: newAddressFormData) {
   return {
     type: ActionTypes.ADD_ENDDRESS,
     payload: {

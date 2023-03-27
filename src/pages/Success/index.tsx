@@ -48,7 +48,7 @@ const Sucess = () => {
                 <Text $scale={16}>
                   {' '}
                   {newOrder.address?.bairro} - {newOrder.address?.cidade},{' '}
-                  {newOrder.address?.estado}{' '}
+                  {newOrder.address?.uf}
                 </Text>
               </div>
             )}
