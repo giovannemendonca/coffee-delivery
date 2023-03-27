@@ -15,6 +15,9 @@ const FormControl = () => {
           sizeWidth='sm'
           {...register('cep')}
           onBlur={({ target }) => handleDataEddress(target.value)}
+          required
+          maxLength={8}
+          minLength={8}
         />
       </S.InputContainer>
       <S.InputContainer>
@@ -23,6 +26,7 @@ const FormControl = () => {
           placeholder='Rua'
           {...register('rua')}
           defaultValue={dataEddressApi && dataEddressApi.logradouro}
+          required
         />
       </S.InputContainer>
       <S.InputContainer>
@@ -30,6 +34,7 @@ const FormControl = () => {
           sizeWidth='xg'
           placeholder='Número'
           {...register('numero')}
+          required
         />
         <S.Input
           sizeWidth='xg'
@@ -43,21 +48,25 @@ const FormControl = () => {
           placeholder='Bairro'
           {...register('bairro')}
           defaultValue={dataEddressApi && dataEddressApi.bairro}
+          required
         />
         <S.Input
           sizeWidth='xg'
           placeholder='Cidade'
           {...register('cidade')}
           defaultValue={dataEddressApi && dataEddressApi.localidade}
+          required
         />
         <S.Input
           sizeWidth='xs'
           placeholder='UF'
           {...register('uf')}
           defaultValue={dataEddressApi && dataEddressApi.uf}
+          required
         />
       </S.InputContainer>
     </S.FormContent>
+    
   )
 }
 

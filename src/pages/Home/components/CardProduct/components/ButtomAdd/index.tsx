@@ -1,6 +1,4 @@
-import { count } from 'console'
 import { ShoppingCart } from 'phosphor-react'
-import React from 'react'
 import * as S from './styles'
 
 interface ButtonAddProps {

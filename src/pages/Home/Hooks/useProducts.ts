@@ -1,9 +1,8 @@
 import { CartContext } from '@src/contexts/ShoppingCartContext'
-import { Item } from '@src/reducers/Cart/reducer'
+import { Item } from '@src/interfaces'
 import { useContext, useState } from 'react'
 
 export function useProducts() {
-  
   const [count, setCount] = useState<number>(0)
 
   const { addItemToCart } = useContext(CartContext)
@@ -27,9 +26,6 @@ export function useProducts() {
     })
     setCount(0)
   }
-
-
-
 
   return {
     count,

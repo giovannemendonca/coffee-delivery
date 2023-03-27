@@ -17,4 +17,9 @@ export const ButtonDefault = styled.button`
     background: ${({theme}) => theme.colors.yellowDark};
     transition: .5s;
   }
+
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 `
